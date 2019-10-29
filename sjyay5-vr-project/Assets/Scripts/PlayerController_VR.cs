@@ -1,0 +1,39 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerController_VR : MonoBehaviour
+{
+
+    public float speed = 5;
+
+    public Rigidbody rigid;
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(Input.GetKey(KeyCode.W))
+        {
+            rigid.MovePosition(transform.position + this.transform.forward * speed * Time.deltaTime);
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            rigid.MovePosition(transform.position + -this.transform.forward * speed * Time.deltaTime);
+        }
+        
+        if (Input.GetKey(KeyCode.A))
+        {
+            rigid.MovePosition(transform.position + -this.transform.right * speed * Time.deltaTime);
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            rigid.MovePosition(transform.position + this.transform.right * speed * Time.deltaTime);
+        }
+
+      //  var rot = transform.rotation;
+      //  rot.x = 0.0f;
+      //  rot.y = 0.0f;
+      //  rot.z = 0.0f;
+      //  transform.rotation = rot;
+    }
+}
