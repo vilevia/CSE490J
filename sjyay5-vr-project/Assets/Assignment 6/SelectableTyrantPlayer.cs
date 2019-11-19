@@ -22,8 +22,8 @@ public class SelectableTyrantPlayer : Selectable
         Debug.Log("Selected");
         isSelected = true;
         gameObject.GetComponent<MeshRenderer>().material = selected;
-
-
+        anim.SetInteger("Pose", poseNum);
+        sound.Stop();
         return this.gameObject;
     }
 
@@ -31,12 +31,10 @@ public class SelectableTyrantPlayer : Selectable
     {
         // TODO:
         // Copy the code from Selectable Tile OnHover Here
-        if(gameObject.GetComponent<MeshRenderer>().material != hover && !isSelected)
+        if (gameObject.GetComponent<MeshRenderer>().material != hover && !isSelected)
         {
             gameObject.GetComponent<MeshRenderer>().material = hover;
         }
-
-
         return this.gameObject;
     }
 
@@ -48,7 +46,7 @@ public class SelectableTyrantPlayer : Selectable
         // Set the object's mesh renderer to the def material
         gameObject.GetComponent<MeshRenderer>().material = def;
         isSelected = false;
-
-
+        anim.SetInteger("Pose", 0);
+        sound.Play();
     }
 }
